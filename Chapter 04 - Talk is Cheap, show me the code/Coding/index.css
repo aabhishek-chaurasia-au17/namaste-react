@@ -67,9 +67,22 @@
     cursor: pointer;
 }
 
+.card:hover{
+    background-color: #d3d3d326;
+}
+
+
 .card > img{
     width: 100%;
     border-radius: 10px;
+}
+
+.card > h2 {
+    padding: 10px 0 10px 0;
+}
+
+.card > h5 {
+    padding: 10px 0 10px 0;
 }
 
 .card > span{
