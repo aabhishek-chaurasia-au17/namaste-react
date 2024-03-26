@@ -1,19 +1,33 @@
-import {CDN_URL} from "../utils/contants"
+import {IMG_CDN_URL} from "../utils/contants"
 
-const RestaurantCard = ({resData}) => {
-    const {data:{name, cuisines, avgRating, costForTwo, cloudinaryImageId, deliveryTime }} = resData
-    return (
-        <>
-        <div className="card">
-            <img src={`${CDN_URL}${cloudinaryImageId}`} alt="food pic" height={"200px"} />
-            <h2>{name}</h2>
-            <h4>{cuisines.join(" ")}</h4>
-            <h5>Rating {avgRating}</h5>
-            <h6>Cost For Two {costForTwo / 100}</h6>
-            <h6>Delivery Time {deliveryTime}</h6>
-        </div>
-        </>
-    )
+const RestaurantCard = ({ cloudinaryImageId, name, cuisines, areaName, sla, costForTwo, avgRatingString}) => {
+    console.log({cloudinaryImageId});
+  return (
+    <div className="card">
+      <img src={IMG_CDN_URL + cloudinaryImageId} />
+      <h3>{name}</h3>
+      <h5>{cuisines.join(", ")}</h5>
+      <h5>{areaName}</h5>
+      <span>
+        <h4
+          style={
+            avgRatingString < 4
+              ? { backgroundColor: "var(--light-red)" }
+              : avgRatingString === "--"
+                ? { backgroundColor: "white", color: "black" }
+                : { color: "white" }
+          }
+        >
+          <i className="fa-solid fa-star"></i>
+          {avgRatingString}
+        </h4>
+        <h4>•</h4>
+        <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>
+        <h4>•</h4>
+        <h4>{costForTwo ?? '₹200 for two'}</h4>
+      </span>
+    </div>
+  );
 }
 
 export default RestaurantCard
