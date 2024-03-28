@@ -64,10 +64,37 @@
 }
 
 .nav-items > ul > li{
-    padding: 40px 30px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 25px 30px 15px 0;
     font-size: large;
     cursor: pointer;
 }
+
+.nav-items > ul > li .logout-btn,
+.nav-items > ul > li .login-btn {
+  color: #ffffff;
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  margin-right: 15px;
+}
+
+.nav-items > ul > li .logout-btn {
+  background-color: var(--orange);
+}
+
+.nav-items > ul > li .login-btn {
+  background-color: var(--light-red);
+}
+
+.nav-items > ul > li .logout-btn:hover,
+.nav-items > ul > li .login-btn:hover {
+  background-color: var(--dark-green);
+}
+
 
 .search-container {
   margin: 100px auto 20px;

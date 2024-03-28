@@ -1,6 +1,8 @@
+import { useState } from "react";
 import FoodLogo from "../../../Images/logo.png";
 
 const Header = () => {
+    const [btnName, setBtnName] = useState(true)
     return (
         <div className="header">
             <div className="logo-container">
@@ -11,9 +13,9 @@ const Header = () => {
                 <ul>
                     <li>Home</li>
                     <li>About</li>
-                    <li>Contact</li>
-                    <li>Sign In</li>
+                    <li>Contact Us</li>                    
                     <li>Cart</li>
+                    <li><button className="login-btn" onClick={() => {setBtnName(!btnName)}}>{btnName ? "login" : "logout"}</button></li>             
                 </ul>
             </div>
         </div>

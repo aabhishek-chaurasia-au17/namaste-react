@@ -40,19 +40,18 @@ const Body = () => {
     }
     
     return allRestaurants.length === 0 ? <Shimmer/> : (
-        <>
-             <div className="search-container">
-                <input
-                type="text"
-                className="search-input"
-                placeholder="Search a restaurant you want..."
-                />
-                <button className="search-btn">Search</button>
-        </div>
-        
+        <>        
         <div className="body">
             <div className="filter">
-                <button className="filter-btn" onClick={getResFilter}>Top Rated Restaurants</button>
+            <div className="search-container">
+            <input
+            type="text"
+            className="search-input"
+            placeholder="Search a restaurant you want..."
+            />
+            <button className="search-btn">Search</button>
+        </div>
+                {/* <button className="filter-btn" onClick={getResFilter}>Top Rated Restaurants</button> */}
             </div>
             <div className="res-container">
             {allRestaurants.map((restaurant) => {

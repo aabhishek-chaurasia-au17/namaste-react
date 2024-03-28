@@ -1,4 +1,5 @@
 import {IMG_CDN_URL} from "../utils/contants"
+import { IoStar } from "react-icons/io5";
 
 const RestaurantCard = ({ cloudinaryImageId, name, cuisines, areaName, sla, costForTwo, avgRatingString}) => {
     console.log({cloudinaryImageId});
@@ -18,8 +19,7 @@ const RestaurantCard = ({ cloudinaryImageId, name, cuisines, areaName, sla, cost
                 : { color: "white" }
           }
         >
-          <i className="fa-solid fa-star"></i>
-          {avgRatingString}
+          <IoStar />&nbsp;{avgRatingString}
         </h4>
         <h4>•</h4>
         <h4>{sla?.lastMileTravelString ?? '2.0 km'}</h4>

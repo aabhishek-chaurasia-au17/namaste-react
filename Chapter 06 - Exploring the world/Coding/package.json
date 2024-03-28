@@ -4,7 +4,7 @@
   "description": "this is namaste react by abhishek chaurasiya",
   "main": "App.js",
   "scripts": {
-    "start": "parcel index.html", 
+    "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
   },
@@ -27,9 +27,10 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1"
   },
   "browserList": [
     "last 2 version"
-  ] 
+  ]
 }
