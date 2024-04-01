@@ -2,7 +2,6 @@ import {IMG_CDN_URL} from "../utils/contants"
 import { IoStar } from "react-icons/io5";
 
 const RestaurantCard = ({ cloudinaryImageId, name, cuisines, areaName, sla, costForTwo, avgRatingString}) => {
-    console.log({cloudinaryImageId});
   return (
     <div className="card">
       <img src={IMG_CDN_URL + cloudinaryImageId} />

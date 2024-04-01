@@ -1,11 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
-import restaurantList from "../utils/mokeData"
+import { RESTAURANT_URL } from "../utils/contants";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
-
+    const [searchText, setSearchText] = useState("")
+    console.log({searchText});
     function getResFilter() {
         setAllRestaurants(
             allRestaurants.filter((item) => {
@@ -19,7 +20,7 @@ const Body = () => {
     }, [])
 
     const fetchData = async() => {
-        const data = await fetch(`https://foodfire.onrender.com/api/restaurants?lat=12.991733&lng=77.713175&page_type=DESKTOP_WEB_LISTING`)
+        const data = await fetch(`${RESTAURANT_URL}`)
         const json = await data.json()
         
         async function checkJsonData(jsonData) {
@@ -44,12 +45,8 @@ const Body = () => {
         <div className="body">
             <div className="filter">
             <div className="search-container">
-            <input
-            type="text"
-            className="search-input"
-            placeholder="Search a restaurant you want..."
-            />
-            <button className="search-btn">Search</button>
+            <input type="text" className="search-input" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search a restaurant you want..."/>
+            <button className="search-btn" onClick={() => {}}>Search</button>
         </div>
                 {/* <button className="filter-btn" onClick={getResFilter}>Top Rated Restaurants</button> */}
             </div>
