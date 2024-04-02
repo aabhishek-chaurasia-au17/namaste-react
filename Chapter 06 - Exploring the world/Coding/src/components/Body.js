@@ -5,6 +5,7 @@ import Shimmer from "./Shimmer";
 
 const Body = () => {
     const [allRestaurants, setAllRestaurants] = useState([]);
+    const [filteredResturant, setFilteredResturant] = useState([]) 
     const [searchText, setSearchText] = useState("")
     console.log({searchText});
     function getResFilter() {
@@ -38,6 +39,7 @@ const Body = () => {
 
     const resData = await checkJsonData(json);
        setAllRestaurants(resData)
+       setFilteredResturant(resData)
     }
     
     return allRestaurants.length === 0 ? <Shimmer/> : (
@@ -46,12 +48,17 @@ const Body = () => {
             <div className="filter">
             <div className="search-container">
             <input type="text" className="search-input" value={searchText} onChange={(e) => setSearchText(e.target.value)} placeholder="Search a restaurant you want..."/>
-            <button className="search-btn" onClick={() => {}}>Search</button>
+            <button className="search-btn" onClick={() => {
+            let filteredResturant = allRestaurants.filter((res) => {
+                   return res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+                })
+            setFilteredResturant(filteredResturant)
+            }}>Search</button>
         </div>
                 {/* <button className="filter-btn" onClick={getResFilter}>Top Rated Restaurants</button> */}
             </div>
             <div className="res-container">
-            {allRestaurants.map((restaurant) => {
+            {filteredResturant.map((restaurant) => {
                 return (
                     <RestaurantCard key={restaurant?.info?.id} {...restaurant?.info} />
                 )}
