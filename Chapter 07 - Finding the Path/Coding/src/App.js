@@ -4,8 +4,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom"
 import About from "./components/About";
+import Error from "./components/Error"
+import Contract from "./components/Contact";
 /* My Food App structure will look like this, 
             1) Header
                 - Logo
@@ -29,7 +31,7 @@ const AppLayout = () => {
     return(
         <div className="app">
             <Header/>
-            <Body/>
+            <Outlet/>
         </div>
     )
 }
@@ -37,11 +39,22 @@ const AppLayout = () => {
 const appRouter = createBrowserRouter([
     {
         path: "/",
-        element: <AppLayout/>
-    },
-    {
-        path: "/about",
-        element: <About/>
+        element: <AppLayout/>,
+        children: [
+            {
+                path:"/",
+                element: <Body/>
+            },
+            {
+                path:"/about",
+                element: <About/>
+            },
+            {
+                path:"/contact",
+                element: <Contract/>
+            },
+        ],
+        errorElement: <Error/>
     }
 ])
 
